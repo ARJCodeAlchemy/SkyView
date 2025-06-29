@@ -1,0 +1,380 @@
+/* === Global Reset and Base Font === */
+* {
+  margin: 0; /* Remove default margin from all elements  */
+  padding: 0; /* Remove default padding from all elements */
+  box-sizing: border-box; /* Include padding and border within the element’s total width and height */
+  font-family: "Poppins", sans-serif; /* Set the base font for the entire document */
+  color: white;
+  font-weight: 600;
+}
+
+/* === Fullscreen Background Styling === */
+body {
+  position: relative;
+  background: url("assets/bg.jpg"); /* Set a background image located in the assets folder */
+  width: 100%; /* Make the body take up the full width of the viewport */
+  height: 100dvh; /* Set the body height to 100% of the dynamic viewport height (mobile safe) */
+  background-size: cover; /* Scale the background image to cover the entire container */
+  display : flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center; /* Center the background image both horizontally and vertically */
+}
+/* === Glassmorphism Effect Overlay === */
+body::before {
+  content: ""; /* Creates an empty pseudo-element before the body’s actual content */
+  position: absolute; /* Removes the element from normal flow, allowing it to overlay content */
+  width: 100%; /* Span the full width of the viewport */
+  height: 100dvh; /* Cover the full dynamic viewport height */
+  background: rgba(0, 0, 0, 0.15); /* Semi-transparent black background for overlay effect */
+  backdrop-filter: blur(15px); /* Apply blur effect to everything behind this layer */
+  z-index: 0; /* Ensure this layer stays behind other positioned elements */
+}
+
+/* UTILITIES */
+.regular-txt{
+    font-weight: 400;
+}
+
+/* UTILITIES */
+
+.main-container{
+    width: 300px;  
+    height : 496px;
+    z-index: 1;
+    background: linear-gradient(
+        to top, rgba(0,0,0,0.15),
+        rgba(255,255,255,0.15)
+    );
+    border-radius: 12px;
+    backdrop-filter: blur(100px);
+    padding: 20px;
+    border: 1.3px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 1 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* INPUT CONTAINER */
+.input-container{
+    position: relative;
+    margin-bottom: 25px;
+
+}
+.city-input{
+    
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 99px;
+    border: 3px solid transparent;
+    background : rgb(0,0,0,0.15);
+    outline : none;
+    font-weight: 500;
+    transition : 0.25s border;
+    padding-right: 45px; /*To avoid the text crossing the search button*/
+}
+.city-input:focus{
+    border: 3px solid rgb(0, 0, 0, 0.15);
+}
+
+.city-input::placeholder {
+    color: rgb(255,255,255,0.75);
+}
+
+.search-btn{
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY( -50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* END INPUT CONTAINER */
+
+
+/* SECTION: WEATHER INFO */
+
+.weather-info {
+    /* border: solid; To be able to see and style all together */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+}
+
+.location-date-containter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.location{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.weather-summary-container{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.weather-summary-img{
+    width: 120px;
+    height: 120px;
+
+}
+
+.weather-summary-info{
+    text-align: end;
+}
+
+.weather-conditions-container{
+    display: flex;
+    justify-content: space-between;
+}
+.condition-item{
+    display: flex;
+    align-items: center;
+    gap : 8px;
+}
+.condition-item span{
+    font-size: 30px;
+}
+
+.forecast-items-container{
+    display: flex;
+    gap : 15px; 
+    overflow-x: scroll; /* WOW */
+    padding-bottom: 12px;
+}
+.forecast-items-container::-webkit-scrollbar {
+    /* display : none; Hides the scroll bar */
+    height : 8px;
+}
+.forecast-items-container::-webkit-scrollbar-track{
+    background: rgb(0, 0, 0, 0.1);
+    border-radius: 99px;
+}
+.forecast-items-container::-webkit-scrollbar-thumb{
+    background: rgb(0, 0, 0, 0.15);
+    border-radius: 99px;
+}
+
+
+
+.forecast-item{
+    min-width: 70px; 
+    background: rgba(255,255,255,0.1);
+    display : flex;
+    flex-direction: column;
+    gap : 6px;
+    padding: 10px;
+    align-items: center;
+    border-radius: 12px;
+    transition: 0.3s background;
+}
+.forecast-item:hover{
+    background: rgba(255,255,255,0.15);
+}
+.forecast-item-img{
+    width: 35px;
+    height: 35px;
+}
+
+/* EMD SECTION: WEATHER INFO */
+
+/* SECTION : MESSAGE */
+
+.section-message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    margin-top: 25%;
+}
+
+.section-message img{
+    height: 180px;
+    width: fit-content;
+}
+
+
+
+/* END SECTION : MESSAGE */
+
+
+/* ------------------------------------------NAVBAR-------------------------------------------------- */
+/* 👇 Navbar ko upar fix kiya gaya hai aur poore width me spread hoga */
+.navbar {
+    position: absolute; 
+    /* Page ke top par fix karne ke liye */
+    top: 0;
+    width: 100%;
+    /* Full width occupy kare */
+    padding: 1rem 2rem;
+    /* Andar ka space - upar neeche 1rem, left-right 2rem */
+    display: flex;
+    /* Flexbox layout for spacing */
+    justify-content: space-between;
+    /* Logo left me aur links right me */
+    align-items: center;
+    /* Vertically center me align */
+    backdrop-filter: blur(50px);
+    /* Blur effect ke liye (glass look) */
+    background-color: rgba(26, 21, 21, 0.1);
+    /* Transparent glassy background */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* Halka sa bottom border */
+    z-index: 10;
+    /* Background se upar dikhe */
+}
+
+/* 👇 Navbar ka logo - thoda bold aur bigger */
+.nav-logo {
+    font-size: 1.4rem;
+    /* Font size thoda bada */
+    font-weight: bold;
+    /* Bold text */
+    color: white;
+    /* White color for visibility */
+    letter-spacing: 1px;
+    /* Letters ke beech ka thoda gap */
+}
+
+/* 👇 Navigation ke link list */
+.nav-links {
+    list-style: none;
+    /* Bullet points hata diye */
+    display: flex;
+    /* Links ko ek line me lane ke liye */
+    gap: 1.8rem;
+    /* Links ke beech gap */
+    margin: 0;
+    padding: 0;
+}
+
+/* 👇 Navigation links ke styling */
+.nav-links li a {
+    text-decoration: none;
+    /* Underline hata diya */
+    color: white;
+    /* White color text */
+    font-weight: 500;
+    /* Thoda bold feel */
+    transition: color 0.3s;
+    /* Smooth hover color transition */
+}
+
+/* 👇 Hover effect - jab mouse le jaaye to color change ho */
+.nav-links li a:hover {
+    color: #f0db4f;
+    /* Yellowish hover color */
+}
+
+
+/* -------------👇 Footer styling --------------------------------------*/
+.footer {
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Transparent background */
+    color: white;
+    /* White text */
+    text-align: center;
+    /* Center me align */
+    padding: 1rem 0;
+    /* Upar neeche padding */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9rem;
+    /* Thoda chhota font */
+    backdrop-filter: blur(5px);
+    /* Slight glassy effect */
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    /* Light top border */
+}
+/* === Map Styling === */
+#leafletMapContainer {
+    position: fixed;
+    /* top: 20%;
+    left: 23%; 
+    width: 60%;
+    height: 60%;
+    /* background : none; */
+    background: rgba(255,255,255,0.15);
+    /* border-radius: 0%; */
+    backdrop-filter: blur(2px);
+    /* dark transparent overlay */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    /* ensure it appears on top */
+    flex-direction: column; 
+    top: 0;
+    left: 0; 
+    width: 100vw;
+    height: 100vh;
+    /* background : none; */
+    background: rgba(193, 177, 177, 0.1);
+    /* border-radius: 0%; */
+    backdrop-filter: blur(6px);
+    /* dark transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    /* ensure it appears on top */
+    flex-direction: column;
+}
+
+#leafletMap {
+    width: 60%;
+    height: 60vh;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.close-map {
+    margin-top: 15px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+} 
+.close-map:hover{
+    background-color: rgb(85, 19, 19);
+}
+
+.map-toggle-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    padding: 10px 14px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+/* VOICEESEARCH */
+.mic-btn {
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
